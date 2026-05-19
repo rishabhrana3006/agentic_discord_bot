@@ -1,0 +1,28 @@
+---
+description: Python style - minimal, simple, light comments
+globs: **/*.py
+alwaysApply: false
+---
+
+# Python coding style
+
+- Prefer the fewest lines that stay clear; avoid ceremony and boilerplate.
+- Keep design flat and direct. No factories, strategy objects, deep inheritance, or other patterns unless they remove real duplication.
+- Use plain functions and simple data structures over abstractions.
+- Comments are rare: one short line only when intent is not obvious from the code.
+- Do not add block docstrings or multi-line comment blocks for obvious code.
+
+## Prefer
+
+```python
+def send_reply(channel, text):
+    return channel.send(text[:2000])
+```
+
+## Avoid
+
+```python
+class MessageSender(ABC):
+  @abstractmethod
+  def send(self, channel: Channel, payload: MessagePayload) -> None: ...
+```
